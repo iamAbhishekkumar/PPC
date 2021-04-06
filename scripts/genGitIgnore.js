@@ -1,4 +1,8 @@
-const gitIgnoreContent =  `
+const fs = require('fs');
+
+
+function createGitIgnore(folderPath) {
+    const gitIgnoreContent = `
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -140,6 +144,14 @@ cython_debug/
 # Vs-Code
 .vscode`;
 
+    fs.appendFile(folderPath + '/.gitignore', gitIgnoreContent, function (err) {
+        if (err) throw err;
+        console.log('gitignore saved !');
+    });
+}
 
 
-module.exports = { gitIgnoreContent }
+
+
+
+module.exports = { createGitIgnore }

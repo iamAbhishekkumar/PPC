@@ -1,8 +1,11 @@
 const vscode = require('vscode');
 const fs = require('fs');
-const template = require('./scripts/templates');
 
-
+const genEnvironment = require('./scripts/genEnvironment');
+const genGitIgnore = require('./scripts/genGitIgnore');
+const genLicense = require('./scripts/genLicense');
+const genPyFiles = require('./scripts/genPyFiles');
+const genReadME = require('./scripts/genReadMe');
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -21,7 +24,7 @@ function activate(context) {
 				const quickPick = vscode.window.createQuickPick();
 				quickPick.items = options.map(label => ({ label }));
 				quickPick.onDidChangeSelection(async ([{ label }]) => {
-					if (label == 'basic') {
+					if (label == 'Basic') {
 						console.log("User chooses basic");
 						const folderName = await vscode.window.showInputBox();
 						createBasicTemplate(currentDirectory + "/" + folderName);
@@ -63,40 +66,13 @@ function createBasicTemplate(folderPath) {
 	console.log(folderPath);
 	if (!fs.existsSync(folderPath)) {
 		fs.mkdirSync(folderPath);
-		fs.appendFile(folderPath + '/.gitignore', template.gitIgnoreContent, function (err) {
-			if (err) throw err;
-			console.log('gitignore saved !');
-		});
-
-		fs.appendFile(folderPath + '/main.py', "", function (err) {
-			if (err) throw err;
-			console.log('main.py saved!');
-		});
-
-		
-		// TODO :  Give option for creating LICENSE TYPE
-		fs.appendFile(folderPath + '/LICENSE', "", function (err) {
-			if (err) throw err;
-			console.log('LICENSE saved!');
-		});
-
-		// TODO: put this in templates.js and capitalize first letter
-		const readmeContent = `# ${folderPath.split("/")[folderPath.split("/").length - 1]}`;
-		fs.appendFile(folderPath + '/README.md', readmeContent, function (err) {
-			if (err) throw err;
-			console.log('Readme saved!');
-		});
-
-		fs.appendFile(folderPath + '/setup.py', "", function (err) {
-			if (err) throw err;
-			console.log('setup.py saved!');
-		});
-
-		fs.appendFile(folderPath + '/tests.py', "", function (err) {
-			if (err) throw err;
-			console.log('tests.py saved!');
-		});
-
+		genGitIgnore.createGitIgnore(folderPath);
+		genPyFiles.genPyFiles(folderPath, "main");
+		genLicense.genLicense(folderPath);
+		genReadME.genReadMe(folderPath);
+		genPyFiles.genPyFiles(folderPath, "setup");
+		genPyFiles.genPyFiles(folderPath, "tests");
+		genEnvironment.genEnvironment(folderPath);
 	}
 }
 
