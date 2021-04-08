@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+const vscode = require('vscode');
 
 function createGitIgnore(folderPath) {
     const gitIgnoreContent = `
@@ -151,7 +151,47 @@ cython_debug/
 }
 
 
+function genEnvironment(folderPath) {
+    // TODO : config for windows
+    const terminal = vscode.window.createTerminal(`bash`);
+    terminal.show(true);
+    terminal.sendText(`cd ${folderPath} && python3 -m venv env || python -m venv env`);
+    terminal.sendText(`source ${folderPath}/env/bin/activate`);
+    terminal.sendText(`pip freeze > ${folderPath}/requirements.txt`);
+}
 
 
+function genLicense(folderPath) {
+    // TODO :  Give option for creating LICENSE TYPE
+    fs.appendFile(folderPath + '/LICENSE', "", function (err) {
+        if (err) throw err;
+        console.log('LICENSE saved!');
+    });
+}
 
-module.exports = { createGitIgnore }
+
+function genPyFiles(folderPath, fileName) {
+    fs.appendFile(`${folderPath}/${fileName}.py`, "", function (err) {
+        if (err) throw err;
+        console.log('main.py saved!');
+    });
+}
+
+
+function genReadMe(folderPath) {
+    // TODO: put this in templates.js and capitalize first letter
+    const readmeContent = `# ${folderPath.split("/")[folderPath.split("/").length - 1]}`;
+    fs.appendFile(folderPath + '/README.md', readmeContent, function (err) {
+        if (err) throw err;
+        console.log('Readme saved!');
+    });
+}
+
+
+module.exports = {
+    createGitIgnore,
+    genEnvironment,
+    genLicense,
+    genPyFiles,
+    genReadMe
+}

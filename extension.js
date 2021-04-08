@@ -1,11 +1,8 @@
 const vscode = require('vscode');
 const fs = require('fs');
 
-const genEnvironment = require('./scripts/genEnvironment');
-const genGitIgnore = require('./scripts/genGitIgnore');
-const genLicense = require('./scripts/genLicense');
-const genPyFiles = require('./scripts/genPyFiles');
-const genReadME = require('./scripts/genReadMe');
+const gen = require('./scripts/generate');
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -27,7 +24,12 @@ function activate(context) {
 					if (label == 'Basic') {
 						console.log("User chooses basic");
 						const folderName = await vscode.window.showInputBox();
-						createBasicTemplate(currentDirectory + "/" + folderName);
+						if (folderName.length != 0) {
+							createBasicTemplate(currentDirectory + "/" + folderName);
+						}
+						else
+							vscode.window.showErrorMessage("Enter a valid project name");
+
 					}
 					quickPick.hide();
 				});
@@ -66,13 +68,16 @@ function createBasicTemplate(folderPath) {
 	console.log(folderPath);
 	if (!fs.existsSync(folderPath)) {
 		fs.mkdirSync(folderPath);
-		genGitIgnore.createGitIgnore(folderPath);
-		genPyFiles.genPyFiles(folderPath, "main");
-		genLicense.genLicense(folderPath);
-		genReadME.genReadMe(folderPath);
-		genPyFiles.genPyFiles(folderPath, "setup");
-		genPyFiles.genPyFiles(folderPath, "tests");
-		genEnvironment.genEnvironment(folderPath);
+		gen.createGitIgnore(folderPath);
+		gen.genPyFiles(folderPath, "main");
+		gen.genLicense(folderPath);
+		gen.genReadMe(folderPath);
+		gen.genPyFiles(folderPath, "setup");
+		gen.genPyFiles(folderPath, "tests");
+		gen.genEnvironment(folderPath);
+
+
+
 	}
 }
 
