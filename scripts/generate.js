@@ -1,6 +1,8 @@
 const fs = require('fs');
 const vscode = require('vscode');
 
+
+// TODO: Add details to files which file is used for what
 function createGitIgnore(folderPath) {
     const gitIgnoreContent = `
 # Byte-compiled / optimized / DLL files
@@ -151,6 +153,7 @@ cython_debug/
 }
 
 
+
 function genEnvironment(folderPath) {
     // TODO : config for windows
     const terminal = vscode.window.createTerminal(`bash`);
@@ -178,9 +181,9 @@ function genPyFiles(folderPath, fileName) {
 }
 
 
-function genReadMe(folderPath) {
+function genReadMe(folderPath,projectName) {
     // TODO: put this in templates.js and capitalize first letter
-    const readmeContent = `# ${folderPath.split("/")[folderPath.split("/").length - 1]}`;
+    const readmeContent = `# ${projectName}`;
     fs.appendFile(folderPath + '/README.md', readmeContent, function (err) {
         if (err) throw err;
         console.log('Readme saved!');

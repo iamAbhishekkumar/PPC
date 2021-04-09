@@ -16,6 +16,12 @@ For example if there is an image subfolder under your extension project workspac
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
 
+## References
+
+* [how-to-structure-flask-application-for-larger-projects](https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/)
+
+* [python-application-layouts](https://realpython.com/python-application-layouts/#django)
+
 ## Extension Settings
 
 Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
