@@ -2,7 +2,12 @@ const vscode = require('vscode');
 const fs = require('fs');
 
 const gen = require('./scripts/generate');
+const template = require('./scripts/templates');
 
+// TODO 1 : Add feature to open the project in new window YES(Recommended) OR NO
+
+// TODO: Add setup.py content,flask-app content
+// 
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -15,13 +20,13 @@ function activate(context) {
 		let currentDirectory = vscode.workspace.workspaceFolders[0].uri.path;
 		if (currentDirectory != null) {
 			try {
-				const options = ['Basic', 'Installable Package', 'Flask-App'];
+				const options = ['Basic', 'Installable Package', 'Flask-App: Basic', 'Flask-App: Advanced'];
 				console.log(options);
 				const quickPick = vscode.window.createQuickPick();
 				quickPick.items = options.map(label => ({ label }));
 				quickPick.onDidChangeSelection(async ([{ label }]) => {
 					const folderName = await vscode.window.showInputBox();
-					if (folderName.length != 0) {
+					if (folderName != null && folderName.length != 0) {
 						switch (label) {
 							case "Basic": {
 								createBasicStructure(currentDirectory + "/" + folderName, folderName);
@@ -29,6 +34,14 @@ function activate(context) {
 							}
 							case "Installable Package": {
 								createSinglePackage(currentDirectory + "/" + folderName, folderName);
+								break;
+							}
+							case "Flask-App: Basic": {
+								createBasicFlaskAppStructure(currentDirectory + "/" + folderName, folderName);
+								break;
+							}
+							case "Flask-App: Advanced": {
+								createAdvancedFlaskAppStructure(currentDirectory + "/" + folderName, folderName);
 								break;
 							}
 
@@ -62,7 +75,7 @@ function deactivate() { }
 // projectName/
 // │
 // ├── .gitignore
-// ├── main.py
+// ├── projectName.py
 // ├── LICENSE
 // ├── README.md
 // ├── requirements.txt
@@ -75,12 +88,12 @@ function createBasicStructure(folderPath, projectName) {
 	console.log(folderPath);
 	if (!fs.existsSync(folderPath)) {
 		fs.mkdirSync(folderPath);
-		gen.createGitIgnore(folderPath);
-		gen.genPyFiles(folderPath, "main");
+		gen.genGitIgnore(folderPath);
+		gen.genFiles(folderPath, `${projectName}.py`, template.projectNamePyHelp);
 		gen.genLicense(folderPath);
 		gen.genReadMe(folderPath, projectName);
-		gen.genPyFiles(folderPath, "setup"); // TODO: Add setup.py template
-		gen.genPyFiles(folderPath, "tests");
+		gen.genFiles(folderPath, "setup.py");
+		gen.genFiles(folderPath, "tests.py");
 		gen.genEnvironment(folderPath);
 	}
 	else {
@@ -92,7 +105,7 @@ function createBasicStructure(folderPath, projectName) {
 // │
 // ├── app
 // │   ├── __init__.py
-// │   ├── helloworld.py
+//     ├── projectName.py
 // │   └── helpers.py
 // │
 // ├── tests
@@ -112,19 +125,18 @@ function createSinglePackage(folderPath, projectName) {
 		fs.mkdirSync(folderPath);
 
 		fs.mkdirSync(`${folderPath}/app`);
-		gen.genPyFiles(`${folderPath}/app`, "__init__");
-		gen.genPyFiles(`${folderPath}/app`, "main");
-		gen.genPyFiles(`${folderPath}/app`, "helpers");
+		gen.genFiles(`${folderPath}/app`, "__init__.py", template.initHelp);
+		gen.genFiles(`${folderPath}/app`, `${projectName}.py`, template.projectNamePyHelp);
+		gen.genFiles(`${folderPath}/app`, "helpers.py");
 
 		fs.mkdirSync(`${folderPath}/tests`);
-		gen.genPyFiles(`${folderPath}/tests`, "tests");
-		gen.genPyFiles(`${folderPath}/tests`, "helpers_tests");
+		gen.genFiles(`${folderPath}/tests`, "tests.py");
+		gen.genFiles(`${folderPath}/tests`, "helpers_tests.py");
 
-		gen.createGitIgnore(folderPath);
+		gen.genGitIgnore(folderPath);
 		gen.genLicense(folderPath);
 		gen.genReadMe(folderPath, projectName);
-		gen.genPyFiles(folderPath, "setup");
-
+		gen.genFiles(folderPath, "setup.py");
 		gen.genEnvironment(folderPath);
 
 	} else {
@@ -132,10 +144,12 @@ function createSinglePackage(folderPath, projectName) {
 	}
 }
 
+// FLASKAPP :Basic
 // projectName
 // │
 // ├── app
 // │   ├── __init__.py
+//     ├── projectName.py
 // │   ├── views.py
 // │   ├── models.py
 // │   ├── helpers.py
@@ -143,36 +157,57 @@ function createSinglePackage(folderPath, projectName) {
 // │       └── main.css
 // │   └── templates
 // │       └── index.html
+// ├── config.py
 // ├── .gitignore
 // ├── LICENSE
 // ├── README.md
 // ├── requirements.txt
-// └── main.py
 
 
 
-function createFlaskAppStructure(folderPath, projectName) {
+function createBasicFlaskAppStructure(folderPath, projectName) {
 	if (!fs.existsSync(folderPath)) {
+		fs.mkdirSync(folderPath);
+		fs.mkdirSync(`${folderPath}/app`);
+		gen.genFiles(`${folderPath}/app`, "__init__.py", template.initHelp);
+		gen.genFiles(`${folderPath}/app`, `${projectName}.py`, template.projectNamePyHelp);
+		gen.genFiles(`${folderPath}/app`, "views.py");
+		gen.genFiles(`${folderPath}/app`, "models.py");
+		gen.genFiles(`${folderPath}/app`, "helpers.py");
 
+		fs.mkdirSync(`${folderPath}/app/static`);
+		gen.genFiles(`${folderPath}/app/static`, "main.css");
+
+		fs.mkdirSync(`${folderPath}/app/templates`);
+		gen.genFiles(`${folderPath}/app/templates`, "index.html");
+
+		gen.genFiles(folderPath, "config.py", "# All your permanent configurations goes here.");
+		gen.genGitIgnore(folderPath);
+		gen.genLicense(folderPath);
+		gen.genReadMe(folderPath, projectName);
+		gen.genEnvironment(folderPath, "pip install flask");
+	} else {
+		alreadyExistsMessage(folderPath);
 	}
 }
 
-
+// FLASKAPP : Advance
 // projectName
 //  ├── app
 //  │   ├── __init__.py
+//  |   ├── projectName.py
 //  │   ├── extensions.py
 //  │   │
 //  │   ├── helpers
 //  │   │   ├── __init__.py
-//  │   │   ├── controllers.py
+//  │   │   ├── views.py
 //  │   │   ├── models.py
 //  │   │   └── commands.py
 //  │   │
 //  │   ├── auth
 //  │   │   ├── __init__.py
 //  │   │   ├── routes.py
-//  │   │   ├── controllers.py
+//  │   │   ├── views.py
 //  │   │   ├── models.py
 //  │   │   ├── forms.py
 //  │   │   └── commands.py
@@ -195,24 +230,74 @@ function createFlaskAppStructure(folderPath, projectName) {
 //  │   │   
 //  │   └── auth
 //  │       ├── __init__.py
-//  │       └── test_controllers.py
+//  │       └── test_views.py
 //  │
 //  ├── config.py
-//  ├── instance
-//  │   └── config.py
 //  ├── wsgi.py
-//  │
 //  ├── requirements.txt
 //  └── README.md 
+
+function createAdvancedFlaskAppStructure(folderPath, projectName) {
+	if (!fs.existsSync(folderPath)) {
+		fs.mkdirSync(folderPath);
+		fs.mkdirSync(`${folderPath}/app`);
+		gen.genFiles(`${folderPath}/app`, "__init__.py", template.initHelp);
+		gen.genFiles(`${folderPath}/app`, `${projectName}.py`, template.projectNamePyHelp);
+		gen.genFiles(`${folderPath}/app`, "extensions.py");
+
+		fs.mkdirSync(`${folderPath}/app/helpers`);
+		gen.genFiles(`${folderPath}/app/helpers`, "__init__.py");
+		gen.genFiles(`${folderPath}/app/helpers`, "views.py");
+		gen.genFiles(`${folderPath}/app/helpers`, "models.py");
+		gen.genFiles(`${folderPath}/app/helpers`, "commands.py");
+
+		fs.mkdirSync(`${folderPath}/app/auth`);
+		gen.genFiles(`${folderPath}/app/auth`, "__init__.py");
+		gen.genFiles(`${folderPath}/app/auth`, "routes.py");
+		gen.genFiles(`${folderPath}/app/auth`, "views.py");
+		gen.genFiles(`${folderPath}/app/auth`, "models.py");
+		gen.genFiles(`${folderPath}/app/auth`, "forms.py", "# Create your http forms here");
+		gen.genFiles(`${folderPath}/app/auth`, "commands.py", "# Custom terminal commands to ease your workflow. ");
+
+		fs.mkdirSync(`${folderPath}/app/ui`);
+		fs.mkdirSync(`${folderPath}/app/ui/static`);
+		fs.mkdirSync(`${folderPath}/app/ui/templates`);
+
+		fs.mkdirSync(`${folderPath}/app/ui/static/css`);
+		gen.genFiles(`${folderPath}/app/ui/static/css`, "style.css");
+		fs.mkdirSync(`${folderPath}/app/ui/static/js`);
+		gen.genFiles(`${folderPath}/app/ui/static/js`, "custom.js");
+
+		gen.genFiles(`${folderPath}/app/ui/templates`, "404.html");
+		gen.genFiles(`${folderPath}/app/ui/templates`, "500.html");
+		gen.genFiles(`${folderPath}/app/ui/templates`, "base.html");
+
+
+		fs.mkdirSync(`${folderPath}/tests`);
+		gen.genFiles(`${folderPath}/tests`, "__init__.py");
+		gen.genFiles(`${folderPath}/conftest`, "__init__.py");
+
+		fs.mkdirSync(`${folderPath}/tests/auth`);
+		gen.genFiles(`${folderPath}/tests/auth`, "__init__.py");
+		gen.genFiles(`${folderPath}/tests/auth`, "test_views.py");
+
+
+		gen.genGitIgnore(folderPath);
+		gen.genLicense(folderPath);
+		gen.genReadMe(folderPath, projectName);
+		gen.genFiles(folderPath, "main.py");
+		gen.genFiles(folderPath, "config.py", "# All your permanent configurations goes here.");
+		gen.genFiles(folderPath, "wsgi.py", "# wsgi module to integrate app with web servers like apache, gunicorn. ");
+		gen.genEnvironment(folderPath, "pip install flask");
+
+	} else {
+		alreadyExistsMessage(folderPath);
+	}
+}
 
 function alreadyExistsMessage(folderPath) {
 	vscode.window.showErrorMessage(`Already exists a folder named as ${folderPath.split("/")[folderPath.split("/").length - 1]}`);
 }
-
-
-
-
-
 
 module.exports = {
 	activate,
