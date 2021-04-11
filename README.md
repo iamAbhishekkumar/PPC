@@ -1,5 +1,7 @@
 # Python Project Creator
 
+
+
 Just as Code Style, API Design, and Automation are essential for a healthy development cycle. Repository structure is a crucial part of your project’s architecture.
 
 When a potential user or contributor lands on your repository’s page, they see a few things:
@@ -15,6 +17,13 @@ If your repo is a massive dump of files or a nested mess of directories, they mi
 Of course, first impressions aren’t everything. You and your colleagues will spend countless hours working with this repository, eventually becoming intimately familiar with every nook and cranny. The layout is important.
 
 **So, to solve that problem, here it is vs-code extension which create the best possible project structure for you only with one click.**
+
+## How to install
+
+This extenasion is in initial stage, thus to install the extension, Download the vsix file from [here.](https://github.com/iamAbhishekkumar/PPC/releases/download/v0.0.1/ppc-0.0.1.vsix) And run this command :
+
+    code --install-extension ppc-0.0.1.vsix
+
 
 ## Known Issues
 

@@ -41,5 +41,9 @@
 		"name": "Abhishek Kumar"
 	},
 	"license": "GPLv3",
-	"repository": {"type": "git","url": "https://github.com/iamAbhishekkumar/PPC"}
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iamAbhishekkumar/PPC"
+	},
+	"publisher": "PPC-gymyjones"
 }
