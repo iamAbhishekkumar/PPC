@@ -4,9 +4,6 @@ const fs = require('fs');
 const gen = require('./scripts/generate');
 const template = require('./scripts/templates');
 
-
-// TODO 1 : Add feature to open the project in new window YES(Recommended) OR NO and if yes push to new window over new window, 
-
 // TODO: flask-app template
 
 /**
