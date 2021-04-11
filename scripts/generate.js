@@ -1,6 +1,7 @@
 const fs = require('fs');
 const vscode = require('vscode');
 const template = require('./templates');
+const commands = require('./commands');
 
 
 // TODO: Add details to files which file is used for what
@@ -14,14 +15,19 @@ function genGitIgnore(folderPath) {
 
 
 function genEnvironment(folderPath, additionalCommand = "") {
-    // TODO : config for windows
+    const originalFolderPath = folderPath;
+    folderPath = `'${folderPath}'`;  // to fix that if their is space in between the path.
     const terminal = vscode.window.createTerminal(`bash`);
     terminal.show(true);
-    terminal.sendText(`cd ${folderPath} && python3 -m venv env || python -m venv env`);
+    terminal.sendText(`cd ${folderPath}`);
+    terminal.sendText(`python3 -m venv env || python -m venv env`);
     terminal.sendText(`source ${folderPath}/env/bin/activate`);
     if (additionalCommand != "")
-        terminal.sendText(additionalCommand);
+        terminal.sendText(additionalCommand); // can be used for pip install flask
     terminal.sendText(`pip freeze > ${folderPath}/requirements.txt`);
+    terminal.sendText(`deactivate`);
+    terminal.sendText(`exit`);
+    sleep(4000).then(() => commands.openInNewWindow(originalFolderPath));
 }
 
 
@@ -51,7 +57,9 @@ function genReadMe(folderPath, projectName) {
     });
 }
 
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms), reject => console.log("rejected"));
+}
 module.exports = {
     genGitIgnore,
     genEnvironment,

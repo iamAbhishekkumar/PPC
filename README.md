@@ -1,71 +1,31 @@
-# ppc README
+# Python Project Creator
 
-This is the README for your extension "ppc". After writing up a brief description, we recommend including the following sections.
+Just as Code Style, API Design, and Automation are essential for a healthy development cycle. Repository structure is a crucial part of your project’s architecture.
 
-## Features
+When a potential user or contributor lands on your repository’s page, they see a few things:
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+    Project Name
+    Project Description
+    Bunch O’ Files
 
-For example if there is an image subfolder under your extension project workspace:
+Only when they scroll below the fold will the user see your project’s README.
 
-\!\[feature X\]\(images/feature-x.png\)
+If your repo is a massive dump of files or a nested mess of directories, they might look elsewhere before even reading your beautiful documentation. Dress for the job you want, not the job you have.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+Of course, first impressions aren’t everything. You and your colleagues will spend countless hours working with this repository, eventually becoming intimately familiar with every nook and cranny. The layout is important.
 
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## References
-
-* [how-to-structure-flask-application-for-larger-projects](https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/)
-
-* [python-application-layouts](https://realpython.com/python-application-layouts/#django)
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+**So, to solve that problem, here it is vs-code extension which create the best possible project structure for you only with one click.**
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+* "Open in new window" dialog appears way before completion of terminal's task.
 
-## Release Notes
+* Tested for linux os only.
 
-Users appreciate release notes as you update your extension.
+## References
 
-### 1.0.0
+* [How to structure Flask Applications](https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/)
 
-Initial release of ...
+* [Python Application Layouts](https://realpython.com/python-application-layouts/#django)
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
------------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**If you find any issues, feel free to raise issues. Enjoy!:smile:**

@@ -4,10 +4,11 @@ const fs = require('fs');
 const gen = require('./scripts/generate');
 const template = require('./scripts/templates');
 
-// TODO 1 : Add feature to open the project in new window YES(Recommended) OR NO
 
-// TODO: Add setup.py content,flask-app content
-// 
+// TODO 1 : Add feature to open the project in new window YES(Recommended) OR NO and if yes push to new window over new window, 
+
+// TODO: flask-app template
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -185,7 +186,7 @@ function createBasicFlaskAppStructure(folderPath, projectName) {
 		gen.genGitIgnore(folderPath);
 		gen.genLicense(folderPath);
 		gen.genReadMe(folderPath, projectName);
-		gen.genEnvironment(folderPath, "pip install flask");
+		gen.genEnvironment(folderPath);
 	} else {
 		alreadyExistsMessage(folderPath);
 	}
@@ -288,12 +289,15 @@ function createAdvancedFlaskAppStructure(folderPath, projectName) {
 		gen.genFiles(folderPath, "main.py");
 		gen.genFiles(folderPath, "config.py", "# All your permanent configurations goes here.");
 		gen.genFiles(folderPath, "wsgi.py", "# wsgi module to integrate app with web servers like apache, gunicorn. ");
-		gen.genEnvironment(folderPath, "pip install flask");
+		gen.genEnvironment(folderPath);
 
 	} else {
 		alreadyExistsMessage(folderPath);
 	}
 }
+
+
+
 
 function alreadyExistsMessage(folderPath) {
 	vscode.window.showErrorMessage(`Already exists a folder named as ${folderPath.split("/")[folderPath.split("/").length - 1]}`);

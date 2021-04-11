@@ -1,6 +1,6 @@
 {
 	"name": "ppc",
-	"displayName": "PPC",
+	"displayName": "PPC(Python Project Creator)",
 	"description": "A extension which creates basic files for a python project",
 	"version": "0.0.1",
 	"engines": {
@@ -36,5 +36,10 @@
 		"mocha": "^8.1.3",
 		"typescript": "^4.0.2",
 		"vscode-test": "^1.4.0"
-	}
+	},
+	"author": {
+		"name": "Abhishek Kumar"
+	},
+	"license": "GPLv3",
+	"repository": {"type": "git","url": "https://github.com/iamAbhishekkumar/PPC"}
 }
