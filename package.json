@@ -40,10 +40,10 @@
 	"author": {
 		"name": "Abhishek Kumar"
 	},
-	"license": "GPLv3",
+	"license": "MIT",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/iamAbhishekkumar/PPC"
 	},
-	"publisher": "PPC-gymyjones"
+	"publisher": "PPC-Abhishek"
 }
