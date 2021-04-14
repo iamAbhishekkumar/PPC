@@ -1,6 +1,15 @@
 //  LICENSE Templates
 
-const flaskTemplate = "";
+const flaskTemplate = `
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+   return 'Hello World’
+
+if __name__ == '__main__':
+   app.run()`;
 
 const initHelp = "# This file has many functions, but for our purposes it tells the Python interpreter that this directory is a package directory. You can set up this __init__.py file in a way that enables you to import classes and methods from the package as a whole";
 

@@ -168,7 +168,7 @@ function createBasicFlaskAppStructure(folderPath, projectName) {
 		fs.mkdirSync(folderPath);
 		fs.mkdirSync(`${folderPath}/app`);
 		gen.genFiles(`${folderPath}/app`, "__init__.py", template.initHelp);
-		gen.genFiles(`${folderPath}/app`, `${projectName}.py`, template.projectNamePyHelp);
+		gen.genFiles(`${folderPath}/app`, `${projectName}.py`, template.flaskTemplate);
 		gen.genFiles(`${folderPath}/app`, "views.py");
 		gen.genFiles(`${folderPath}/app`, "models.py");
 		gen.genFiles(`${folderPath}/app`, "helpers.py");
@@ -240,7 +240,7 @@ function createAdvancedFlaskAppStructure(folderPath, projectName) {
 		fs.mkdirSync(folderPath);
 		fs.mkdirSync(`${folderPath}/app`);
 		gen.genFiles(`${folderPath}/app`, "__init__.py", template.initHelp);
-		gen.genFiles(`${folderPath}/app`, `${projectName}.py`, template.projectNamePyHelp);
+		gen.genFiles(`${folderPath}/app`, `${projectName}.py`, template.flaskTemplate);
 		gen.genFiles(`${folderPath}/app`, "extensions.py");
 
 		fs.mkdirSync(`${folderPath}/app/helpers`);
@@ -283,7 +283,6 @@ function createAdvancedFlaskAppStructure(folderPath, projectName) {
 		gen.genGitIgnore(folderPath);
 		gen.genLicense(folderPath);
 		gen.genReadMe(folderPath, projectName);
-		gen.genFiles(folderPath, "main.py");
 		gen.genFiles(folderPath, "config.py", "# All your permanent configurations goes here.");
 		gen.genFiles(folderPath, "wsgi.py", "# wsgi module to integrate app with web servers like apache, gunicorn. ");
 		gen.genEnvironment(folderPath);

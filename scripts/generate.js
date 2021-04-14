@@ -26,7 +26,7 @@ function genEnvironment(folderPath, additionalCommand = "") {
         terminal.sendText(additionalCommand); // can be used for pip install flask
     terminal.sendText(`pip freeze > ${folderPath}/requirements.txt`);
     terminal.sendText(`deactivate`);
-    terminal.sendText(`exit`);
+    // terminal.sendText(`exit`);
     sleep(4000).then(() => commands.openInNewWindow(originalFolderPath));
 }
 
