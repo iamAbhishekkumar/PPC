@@ -18,7 +18,7 @@ Of course, first impressions aren’t everything. You and your colleagues will s
 
 ## How to install
 
-This extension is in its initial stage, thus to install the extension, Download the vsix file from [here.](https://github.com/iamAbhishekkumar/PPC/releases/download/v0.0.1/ppc-0.0.1.vsix) And run this command :
+This extension is in its initial stage, thus to install, download the vsix file from [here.](https://github.com/iamAbhishekkumar/PPC/releases/download/v0.0.1/ppc-0.0.1.vsix) And run this command :
 
     code --install-extension ppc-0.0.1.vsix
 
