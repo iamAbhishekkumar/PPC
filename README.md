@@ -14,11 +14,11 @@ If your repo is a massive dump of files or a nested mess of directories, they mi
 
 Of course, first impressions aren’t everything. You and your colleagues will spend countless hours working with this repository, eventually becoming intimately familiar with every nook and cranny. The layout is important.
 
-**So, to solve that problem, here it is vs-code extension which create the best possible project structure for you only with one click.**
+**So, to solve that problem, here it is a vs-code extension which creates the best possible project structure.**
 
 ## How to install
 
-This extenasion is in initial stage, thus to install the extension, Download the vsix file from [here.](https://github.com/iamAbhishekkumar/PPC/releases/download/v0.0.1/ppc-0.0.1.vsix) And run this command :
+This extension is in its initial stage, thus to install the extension, Download the vsix file from [here.](https://github.com/iamAbhishekkumar/PPC/releases/download/v0.0.1/ppc-0.0.1.vsix) And run this command :
 
     code --install-extension ppc-0.0.1.vsix
 
@@ -32,7 +32,7 @@ This extenasion is in initial stage, thus to install the extension, Download the
 
 * Tested for linux os only.
 
-## Different Structures
+## Different Project Structures
 
 * Basic App Structure
 
