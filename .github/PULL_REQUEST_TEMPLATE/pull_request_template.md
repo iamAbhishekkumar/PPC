@@ -1,13 +1,13 @@
 ---
 name: Pull Request
 about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
-
+title: ""
+labels: ""
+assignees: ""
 ---
 
 ## Changes Made
+
 .....
 
 ## Type of change
@@ -17,8 +17,8 @@ assignees: ''
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 - [ ] This change requires a documentation update
 
-
 ## Checklist:
+
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have made corresponding changes to the documentation
