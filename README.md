@@ -1,4 +1,6 @@
-# Python Project Creator
+# Python Project Creator:computer:
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
 Just as Code Style, API Design, and Automation are essential for a healthy development cycle. Repository structure is a crucial part of your project’s architecture.
 
@@ -16,7 +18,7 @@ Of course, first impressions aren’t everything. You and your colleagues will s
 
 **So, to solve that problem, here it is a vs-code extension which creates the best possible project structure.**
 
-## How to install
+## How to install:anchor:
 
 This extension is in its initial stage, thus to install, download the vsix file from [here.](https://github.com/iamAbhishekkumar/PPC/releases/download/v0.0.1/ppc-0.0.1.vsix) And run this command :
 
@@ -26,13 +28,24 @@ This extension is in its initial stage, thus to install, download the vsix file 
 
 ![Demo](assets/demo.gif)
 
-## Known Issues
+## Known Issues:detective:
 
 - "Open in new window" dialog appears way before completion of terminal's task.
 
 - Tested for linux os only.
 
-## Different Project Structures
+## How to Contribute:rocket
+
+1. Clone this repo using, `git clone https://github.com/iamAbhishekkumar/PPC`
+
+2. Go to the directory.
+3. Run `npm i` or `npm install`
+
+4. To run the extension : `Ctlr + f5`
+
+5. To build the extension : `npx vsce package`
+
+## Different Project Structures:construction:
 
 - Basic App Structure
 
@@ -140,7 +153,7 @@ projectName
  └── README.md
 ```
 
-## References
+## References :smile_cat:
 
 - [How to structure Flask Applications](https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/)
 
