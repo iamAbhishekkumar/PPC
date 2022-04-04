@@ -25,32 +25,30 @@ Of course, first impressions aren’t everything. You and your colleagues will s
 
 **So, to solve that problem, here it is a vs-code extension which creates the best possible project structure.**
 
-## How to install:anchor:
+## How to install⚓️
 
-This extension is in its initial stage, thus to install, download the vsix file from [here.](https://github.com/iamAbhishekkumar/PPC/releases/download/v0.0.1/ppc-0.0.1.vsix) And run this command :
+Directly search for **PPC** or [refer to this](https://marketplace.visualstudio.com/items?itemName=iamAbhishekkumar.ppc).
 
-    code --install-extension ppc-0.0.1.vsix
-
-## Preview :tv:
+## Preview📺
 
 ![Demo](assets/demo.gif)
 
-## Known Issues:detective:
+## Known Issues🕵
 
 - "Open in new window" dialog appears way before completion of terminal's task.
 
 - Tested for linux os only.
 
-## How to Contribute:rocket:
+## How to Contribute🚀
 
 1. Fork the [repo](https://github.com/iamAbhishekkumar/PPC)
 2. If the Issue you want to solve is not present in open issue, create an Issue.
 3. Comment on the issue, you want to work on.
 4. Work on your Fork and test it.
 5. Send A PR
-6. Follow [me](https://github.com/iamAbhishekkumar):upside_down_face:
+6. Follow [me](https://github.com/iamAbhishekkumar)🙃
 
-## How to setup:star:
+## How to setup⭐️
 
 1. Clone the forked repo
 2. Go to the directory
@@ -58,7 +56,7 @@ This extension is in its initial stage, thus to install, download the vsix file 
 4. To run the extension : `Ctlr + f5`
 5. To build the extension : `npx vsce package`
 
-## Different Project Structures:construction:
+## Different Project Structures🚧
 
 - Basic App Structure
 
@@ -166,12 +164,10 @@ projectName
  └── README.md
 ```
 
-## References :smile_cat:
+## References😸
 
 - [How to structure Flask Applications](https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/)
 
 - [Python Application Layouts](https://realpython.com/python-application-layouts/#django)
 
-**If you like it, :star:this repo :upside_down_face:**
-
-**If you find any issues, feel free to raise issues. Enjoy!:smile:**
+If you like it, ⭐️ this repo 🙃
