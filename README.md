@@ -28,13 +28,13 @@ This extension is in its initial stage, thus to install, download the vsix file 
 
 ## Known Issues
 
-* "Open in new window" dialog appears way before completion of terminal's task.
+- "Open in new window" dialog appears way before completion of terminal's task.
 
-* Tested for linux os only.
+- Tested for linux os only.
 
 ## Different Project Structures
 
-* Basic App Structure
+- Basic App Structure
 
 ```
 projectName/
@@ -47,10 +47,9 @@ projectName/
 ├── setup.py
 └── tests.py
 └── env
-``` 
+```
 
-
-* Installable Package
+- Installable Package
 
 ```
 projectName/
@@ -68,9 +67,9 @@ projectName/
 ├── requirements.txt
 └── setup.py
 └── env
-``` 
+```
 
-* Flask-App: Basic
+- Flask-App: Basic
 
 ```
 projectName
@@ -90,9 +89,9 @@ projectName
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
-``` 
+```
 
-* Flask-App: Advanced
+- Flask-App: Advanced
 
 ```
 projectName
@@ -130,7 +129,7 @@ projectName
  ├── tests
  │   ├── __init__.py
  │   ├── conftest.py
- │   │   
+ │   │
  │   └── auth
  │       ├── __init__.py
  │       └── test_views.py
@@ -138,14 +137,14 @@ projectName
  ├── config.py
  ├── wsgi.py
  ├── requirements.txt
- └── README.md 
-``` 
+ └── README.md
+```
 
 ## References
 
-* [How to structure Flask Applications](https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/)
+- [How to structure Flask Applications](https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/)
 
-* [Python Application Layouts](https://realpython.com/python-application-layouts/#django)
+- [Python Application Layouts](https://realpython.com/python-application-layouts/#django)
 
 **If you like it, :star:this repo :upside_down_face:**
 

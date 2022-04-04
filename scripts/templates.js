@@ -11,9 +11,11 @@ def hello_world():
 if __name__ == '__main__':
    app.run()`;
 
-const initHelp = "# This file has many functions, but for our purposes it tells the Python interpreter that this directory is a package directory. You can set up this __init__.py file in a way that enables you to import classes and methods from the package as a whole";
+const initHelp =
+  "# This file has many functions, but for our purposes it tells the Python interpreter that this directory is a package directory. You can set up this __init__.py file in a way that enables you to import classes and methods from the package as a whole";
 
-const projectNamePyHelp = "# All your our project starts here. Blueprints, extensions, commands and all other fancy stuff will be defined in their own modules. But all those components will be hooked up together here.";
+const projectNamePyHelp =
+  "# All your our project starts here. Blueprints, extensions, commands and all other fancy stuff will be defined in their own modules. But all those components will be hooked up together here.";
 
 const gitIgnoreContent = `
 # Byte-compiled / optimized / DLL files
@@ -157,5 +159,9 @@ cython_debug/
 # Vs-Code
 .vscode`;
 
-
-module.exports = { flaskTemplate, initHelp, projectNamePyHelp, gitIgnoreContent };
+module.exports = {
+  flaskTemplate,
+  initHelp,
+  projectNamePyHelp,
+  gitIgnoreContent,
+};
