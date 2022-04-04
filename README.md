@@ -31,7 +31,7 @@ This extension is in its initial stage, thus to install, download the vsix file 
 
     code --install-extension ppc-0.0.1.vsix
 
-## How to use
+## Preview :tv:
 
 ![Demo](assets/demo.gif)
 
@@ -41,15 +41,21 @@ This extension is in its initial stage, thus to install, download the vsix file 
 
 - Tested for linux os only.
 
-## How to Contribute:rocket
+## How to Contribute:rocket:
 
-1. Clone this repo using, `git clone https://github.com/iamAbhishekkumar/PPC`
+1. Fork the [repo](https://github.com/iamAbhishekkumar/PPC)
+2. If the Issue you want to solve is not present in open issue, create an Issue.
+3. Comment on the issue, you want to work on.
+4. Work on your Fork and test it.
+5. Send A PR
+6. Follow [me](https://github.com/iamAbhishekkumar):upside_down_face:
 
-2. Go to the directory.
+## How to setup:star:
+
+1. Clone the forked repo
+2. Go to the directory
 3. Run `npm i` or `npm install`
-
 4. To run the extension : `Ctlr + f5`
-
 5. To build the extension : `npx vsce package`
 
 ## Different Project Structures:construction:
