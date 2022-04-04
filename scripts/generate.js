@@ -57,7 +57,7 @@ function genReadMe(folderPath, projectName) {
 function sleep(ms) {
   return new Promise(
     (resolve) => setTimeout(resolve, ms),
-    (reject) => console.log("rejected")
+    (reject) => console.log(reject)
   );
 }
 module.exports = {
