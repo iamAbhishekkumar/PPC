@@ -2,6 +2,7 @@
   "name": "ppc",
   "displayName": "PPC(Python Project Creator)",
   "description": "A extension which creates basic files for a python project",
+  "icon": "assets/icon.png",
   "version": "1.0.1",
   "engines": {
     "vscode": "^1.46.0"
